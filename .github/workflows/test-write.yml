@@ -3,8 +3,17 @@ name: Test write
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: read
+
 jobs:
-  test:
+  check:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ok
+      - name: Show Pages JSON
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/pages" || true
+          gh api "repos/${GITHUB_REPOSITORY}/pages/builds?per_page=3" || true
