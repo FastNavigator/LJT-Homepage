@@ -1,19 +1,37 @@
-name: Test write
+name: Publish static Pages branch
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
+  contents: write
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  publish:
+    runs-on: ubuntu-24.04
     steps:
-      - name: Configure Pages build type
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - uses: ruby/setup-ruby@v1.328.0
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - run: npm install -g uglify-js
+
+      - name: Build
         run: |
-          gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow || true
-          gh api "repos/${GITHUB_REPOSITORY}/pages" || true
+          uglifyjs assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js
+          bundle exec jekyll build --baseurl "/LJT-Homepage"
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          force_orphan: true
