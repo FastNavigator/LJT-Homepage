@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a first-year Ph.D. candidate at the [HKUST NLP Group](https://github.com/FastNavigator/LJT-Homepage#academic-background), where I work on natural language processing and machine learning. I began the Ph.D. in Computer Science at the Hong Kong University of Science and Technology in 2024 after receiving my B.Eng. from Shanghai Jiao Tong University in June 2024. My research interests include **LLM reasoning and reinforcement learning**, **hallucination in vision-language models**, and **LLM truthfulness and interpretability**.
+I am a first-year Ph.D. candidate at the **HKUST NLP Group**, where I work on natural language processing and machine learning. I began the Ph.D. in Computer Science at the Hong Kong University of Science and Technology in 2024 after receiving my B.Eng. from Shanghai Jiao Tong University in June 2024. My research interests include **LLM reasoning and reinforcement learning**, **hallucination in vision-language models**, and **LLM truthfulness and interpretability**.
 
 **Quick links:** [Email](mailto:jliugi@connect.ust.hk) · [GitHub](https://github.com/Vicent0205) · [Google Scholar](https://scholar.google.com/citations?hl=en&user=tbK9jl4AAAAJ&view_op=list_works&sortby=pubdate) · [X / Twitter](https://x.com/junteng88716710) · [Publications page]({{ '/publications/' | relative_url }})
 
